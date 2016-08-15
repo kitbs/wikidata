@@ -12,7 +12,7 @@ class Wikidata {
 	const API_BASE_ENDPOINT = 'https://www.wikidata.org/w/api.php';
 
 	const SEARCH_API_ACTION = 'wbsearchentities';
-	const ENTITY_API_ACTION = 'wbgetentities';
+    const ENTITY_API_ACTION = 'wbgetentities';
 
     /**
      * Use wbsearchentities method to search on wikidata
@@ -152,14 +152,14 @@ class Wikidata {
     }
 
     /**
-     * Use wbgetentities method to get label of property from Wikidata
+     * Use wbgetentities method to get a property from Wikidata
      * @param  string $id       Property id (like Q43)
      * @param  string $language Language
      * @return object          /Response/PropertyResponse
      */
     public function property($id, $language = 'en') {
 
-        $url = sprintf('%s?action=%s&format=json&props=labels&ids=%s&languages=%s', self::API_BASE_ENDPOINT, self::ENTITY_API_ACTION, urlencode($id), $language);
+        $url = sprintf('%s?action=%s&format=json&ids=%s&languages=%s&props=labels|claims|info', self::API_BASE_ENDPOINT, self::ENTITY_API_ACTION, urlencode($id), $language);
 
         $response = $this->doRequest($url);
 
