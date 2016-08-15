@@ -34,4 +34,18 @@ class SearchItem {
 
 	}
 
+	public function getLabel()
+	{
+	       return $this->label;
+	}
+
+	public function getDescription()
+	{
+	       return $this->description;
+	}
+
+	public function getAliases()
+	{
+	       return $this->aliases;
+	}
 }
