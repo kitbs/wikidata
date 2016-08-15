@@ -159,7 +159,7 @@ class Wikidata {
      */
     public function property($id, $language = 'en') {
 
-        $url = sprintf('%s?action=%s&format=json&ids=%s&languages=%s&props=labels|claims|info', self::API_BASE_ENDPOINT, self::ENTITY_API_ACTION, urlencode($id), $language);
+        $url = sprintf('%s?action=%s&format=json&ids=%s&languages=%s&props=labels|claims|info|aliases', self::API_BASE_ENDPOINT, self::ENTITY_API_ACTION, urlencode($id), $language);
 
         $response = $this->doRequest($url);
 
