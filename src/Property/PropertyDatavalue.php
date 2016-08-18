@@ -12,6 +12,13 @@ class PropertyDatavalue {
 	 * @param object $datavalue StdClass object with datavalue
 	 */
 	public function __construct($datavalue) {
+		
+		if( $datavalue == 'novalue' )
+		{
+			$this->value = $this->createPropertyValueByType(null, 'novalue');
+			$this->type = 'novalue';
+			return;
+		}
 
 		$this->value = $this->createPropertyValueByType($datavalue->value, $datavalue->type);
 		$this->type = $datavalue->type;
@@ -49,6 +56,9 @@ class PropertyDatavalue {
 	 * @return mix   Return string or array of objects   
 	 */
 	public function getValue($lang = 'en') {
+
+		if( is_null( $this->value ) )
+			return null;
 
 		if(is_string($this->value))
 			return $this->value;

@@ -31,6 +31,25 @@ class Wikidata {
 
 	}
 
+    public function getMatchCount( $text, $language = 'en' )
+    {
+        $queryString = 
+        'SELECT (count(distinct ?s) as ?count) WHERE {
+          ?s ?label "%s"@%s .
+          ?s ?p ?o
+        }';
+
+        $query = sprintf( $queryString, $text, $language );
+
+        $url = sprintf('%s?format=json&query=%s', self::SPARQL_API_BASE_ENDPOINT, urlencode($query));
+
+        $response = $this->doRequest($url);     
+
+        $response = json_decode( $response, true );
+
+        return $response['results']['bindings'][0]['count']['value'];
+    }
+
     /**
      * Use SPARQL endpoint to search on property entity
      * @param  string $propertyId       Property id (e.g. P268)
@@ -177,6 +196,7 @@ class Wikidata {
 		$data = @file_get_contents($url);
         if (!$data) {
             $error = error_get_last();
+
             throw new HttpRequestException($error['message']);
         }
 
