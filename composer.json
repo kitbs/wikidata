@@ -1,5 +1,5 @@
 {
-	"name": "freearhey/wikidata",
+	"name": "jamesfrost/wikidata",
 	"description": "A PHP client for working with Wikidata API.",
 	"keywords": ["wikidata", "client", "php"],
 	"homepage": "https://github.com/freearhey/wikidata",
