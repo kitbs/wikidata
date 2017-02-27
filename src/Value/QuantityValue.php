@@ -10,8 +10,8 @@ class QuantityValue {
 
 		$this->amount = $value->amount;
 		$this->unit = $value->unit;
-		$this->upperBound = $value->upperBound;
-		$this->lowerBound = $value->lowerBound;
+		$this->upperBound = isset($value->upperBound) ? $value->upperBound : null;
+		$this->lowerBound = isset($value->lowerBound) ? $value->lowerBound : null;
 
 	}
 
