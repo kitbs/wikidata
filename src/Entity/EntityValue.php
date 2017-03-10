@@ -1,26 +1,27 @@
-<?php namespace Wikidata\Entity;
+<?php
 
-class EntityValue {
-	
-	/**
-	 * Class constructor
-	 * @param object $value StdClass object
-	 */
-	public function __construct($value) {
+namespace Wikidata\Entity;
 
-		$this->language = $value->language;
-		$this->value = $value->value;
+class EntityValue
+{
+    /**
+     * Class constructor.
+     *
+     * @param object $value StdClass object
+     */
+    public function __construct($value)
+    {
+        $this->language = $value->language;
+        $this->value = $value->value;
+    }
 
-	}
-
-	/**
-	 * Get only value without language
-	 * @return string
-	 */
-	public function getValue() {
-
-		return $this->value;
-
-	}
-
+    /**
+     * Get only value without language.
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
 }

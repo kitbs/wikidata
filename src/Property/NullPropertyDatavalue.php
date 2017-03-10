@@ -1,7 +1,10 @@
-<?php namespace Wikidata\Property;
+<?php
 
-class NullPropertyDatavalue {
-	public function getValue() {
-		return null;
-	}
+namespace Wikidata\Property;
+
+class NullPropertyDatavalue
+{
+    public function getValue()
+    {
+    }
 }

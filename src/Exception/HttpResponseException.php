@@ -1,3 +1,7 @@
-<?php namespace Wikidata\Exception;
+<?php
 
-class HttpResponseException extends Exception {}
+namespace Wikidata\Exception;
+
+class HttpResponseException extends Exception
+{
+}

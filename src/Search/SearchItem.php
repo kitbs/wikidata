@@ -1,51 +1,58 @@
-<?php namespace Wikidata\Search;
+<?php
 
-class SearchItem {
-	
-	private $id,
-			$url,
-			$label,
-			$description,
-			$match,
-			$aliases;
+namespace Wikidata\Search;
 
-	/**
-	 * Class constructor
-	 * @param object $item StdClass object with item
-	 */
-	public function __construct($item) {
+class SearchItem
+{
+    private $id;
 
-		$this->id = $item->id;
-		$this->url = $item->url;
-		$this->label = $item->label;
-		$this->description = (isset($item->description)) ? $item->description : null;
-		$this->match = new SearchItemMatch($item->match);
-		$this->aliases = (isset($item->aliases)) ? $item->aliases : null;
+    private $url;
 
-	}
+    private $label;
 
-	/**
-	 * Get only entity id
-	 * @return string
-	 */
-	public function getEntityId() {
+    private $description;
 
-		return $this->id;
+    private $match;
 
-	}
+    private $aliases;
 
-	public function getLabel()
-	{
-	       return $this->label;
-	}
+    /**
+     * Class constructor.
+     *
+     * @param object $item StdClass object with item
+     */
+    public function __construct($item)
+    {
+        $this->id = $item->id;
+        $this->url = $item->url;
+        $this->label = $item->label;
+        $this->description = (isset($item->description)) ? $item->description : null;
+        $this->match = new SearchItemMatch($item->match);
+        $this->aliases = (isset($item->aliases)) ? $item->aliases : null;
+    }
 
-	public function getDescription()
-	{
-	       return $this->description;
-	}
+    /**
+     * Get only entity id.
+     *
+     * @return string
+     */
+    public function getEntityId()
+    {
+        return $this->id;
+    }
 
-	public function getAliases()
-	{
-	       return $this->aliases;
-	}
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function getAliases()
+    {
+        return $this->aliases;
+    }
 }
