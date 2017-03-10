@@ -1,3 +1,7 @@
-<?php namespace Wikidata\Exception;
+<?php
 
-class InvalidArgumentException extends Exception {}
+namespace Wikidata\Exception;
+
+class InvalidArgumentException extends Exception
+{
+}

@@ -1,3 +1,7 @@
-<?php namespace Wikidata\Exception;
+<?php
 
-class Exception extends \Exception {}
+namespace Wikidata\Exception;
+
+class Exception extends \Exception
+{
+}

@@ -1,32 +1,35 @@
-<?php namespace Wikidata\Property;
+<?php
 
-class PropertyQualifier {
-	
-	/**
-	 * Class constructor
-	 * @param object $qualifier StdClass object with qualifier
-	 */
-	public function __construct($qualifier) {
-		$this->hash = $qualifier->hash;
-		$this->snaktype = $qualifier->snaktype;
-		$this->property = $qualifier->property;
-		$this->datatype = $qualifier->datatype;
-		
-		if( $this->snaktype === 'novalue' )
-			$this->datavalue = new PropertyDatavalue('novalue');
-		else
-			$this->datavalue = new PropertyDatavalue($qualifier->datavalue);
+namespace Wikidata\Property;
 
-	}
+class PropertyQualifier
+{
+    /**
+     * Class constructor.
+     *
+     * @param object $qualifier StdClass object with qualifier
+     */
+    public function __construct($qualifier)
+    {
+        $this->hash = $qualifier->hash;
+        $this->snaktype = $qualifier->snaktype;
+        $this->property = $qualifier->property;
+        $this->datatype = $qualifier->datatype;
 
-	/**
-	 * Get property datavalue
-	 * @return object /Property/PropertyDatavalue
-	 */
-	public function getDatavalue() {
+        if ($this->snaktype === 'novalue') {
+            $this->datavalue = new PropertyDatavalue('novalue');
+        } else {
+            $this->datavalue = new PropertyDatavalue($qualifier->datavalue);
+        }
+    }
 
-		return $this->datavalue;
-
-	}
-
+    /**
+     * Get property datavalue.
+     *
+     * @return object /Property/PropertyDatavalue
+     */
+    public function getDatavalue()
+    {
+        return $this->datavalue;
+    }
 }
