@@ -3,7 +3,7 @@
 use Wikidata\Entity\Entity;
 
 class EntityResponse {
-	
+
 	private $entities,
 			$success;
 
@@ -12,12 +12,12 @@ class EntityResponse {
 	 * @param json $data Wikidata json response with entities
 	 */
 	public function __construct($data) {
-		
+
 		$response = json_decode($data);
 
 		$this->entities = array_map([$this, 'createEntity'], (array) $response->entities);
 		$this->success = $response->success;
-		
+
 	}
 
 	/**
