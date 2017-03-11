@@ -3,7 +3,6 @@
 namespace Wikidata\Response;
 
 use Wikidata\AbstractNode;
-
 use Wikidata\Search\SearchItem;
 
 class SearchResponse extends AbstractNode

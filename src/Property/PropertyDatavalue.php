@@ -3,7 +3,6 @@
 namespace Wikidata\Property;
 
 use Wikidata\AbstractNode;
-
 use Wikidata\Value\GlobeCoordinateValue;
 use Wikidata\Value\QuantityValue;
 use Wikidata\Value\TimeValue;

@@ -19,9 +19,9 @@ class SearchItemMatch extends AbstractNode
      */
     public function __construct($match)
     {
-        $this->type     = $match->type;
+        $this->type = $match->type;
         $this->language = $match->language;
-        $this->text     = $match->text;
+        $this->text = $match->text;
     }
 
     public function jsonSerialize()
