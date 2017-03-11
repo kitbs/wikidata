@@ -69,14 +69,14 @@ class Wikidata
         $params['offset'] = isset($params['offset']) ? $params['offset'] : 0;
 
         $queryString =
-        'SELECT ?item ?itemLabel ?itemDescription ?itemAltLabel WHERE 
+        'SELECT ?item ?itemLabel ?itemDescription ?itemAltLabel WHERE
         {
             ?item wdt:%s wd:%s .
-            SERVICE wikibase:label 
+            SERVICE wikibase:label
             {
-                bd:serviceParam wikibase:language "%s" . 
+                bd:serviceParam wikibase:language "%s" .
             }
-        } 
+        }
         OFFSET %s LIMIT %s';
 
         $query = sprintf($queryString, $propertyId, $entityId, $params['language'], $params['offset'], $params['limit']);
@@ -105,14 +105,14 @@ class Wikidata
         $params['offset'] = isset($params['offset']) ? $params['offset'] : 0;
 
         $queryString =
-        'SELECT ?item ?itemLabel ?itemDescription ?itemAltLabel WHERE 
+        'SELECT ?item ?itemLabel ?itemDescription ?itemAltLabel WHERE
         {
             ?item wdt:%s "%s" .
-            SERVICE wikibase:label 
-            { 
-                bd:serviceParam wikibase:language "%s" . 
+            SERVICE wikibase:label
+            {
+                bd:serviceParam wikibase:language "%s" .
             }
-        } 
+        }
         OFFSET %s LIMIT %s';
 
         $query = sprintf($queryString, $propertyId, $value, $params['language'], $params['offset'], $params['limit']);

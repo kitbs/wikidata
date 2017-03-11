@@ -2,11 +2,14 @@
 
 namespace Wikidata\Response;
 
+use Wikidata\AbstractNode;
+
 use Wikidata\Entity\Entity;
 
-class EntityResponse
+class EntityResponse extends AbstractNode
 {
     private $entities;
+
     private $success;
 
     /**
@@ -70,5 +73,10 @@ class EntityResponse
     private function createEntity($item)
     {
         return new Entity($item);
+    }
+
+    public function jsonSerialize()
+    {
+        return collect($this->entities)->jsonSerialize();
     }
 }

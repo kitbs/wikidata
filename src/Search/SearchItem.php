@@ -2,7 +2,9 @@
 
 namespace Wikidata\Search;
 
-class SearchItem
+use Wikidata\AbstractNode;
+
+class SearchItem extends AbstractNode
 {
     private $id;
 
@@ -17,10 +19,10 @@ class SearchItem
     private $aliases;
 
     /**
-     * Class constructor.
-     *
-     * @param object $item StdClass object with item
-     */
+    * Class constructor.
+    *
+    * @param object $item StdClass object with item
+    */
     public function __construct($item)
     {
         $this->id = $item->id;
@@ -32,10 +34,10 @@ class SearchItem
     }
 
     /**
-     * Get only entity id.
-     *
-     * @return string
-     */
+    * Get only entity id.
+    *
+    * @return string
+    */
     public function getEntityId()
     {
         return $this->id;
@@ -54,5 +56,21 @@ class SearchItem
     public function getAliases()
     {
         return $this->aliases;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id'          => $this->getEntityId(),
+            'url'         => $this->url,
+            'label'       => $this->label->jsonSerialize(),
+            'description' => $this->description instanceof AbstractNode ? $this->description->jsonSerialize() : null,
+            'aliases'     => collect($this->aliases)->transform(function($aliases) {
+                return collect($aliases)->transform(function($alias) {
+                    return $alias->jsonSerialize();
+                });
+            })->jsonSerialize(),
+            'match' => $this->match instanceof AbstractNode ? $this->match->jsonSerialize() : null,
+        ];
     }
 }

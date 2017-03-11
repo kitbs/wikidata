@@ -2,13 +2,19 @@
 
 namespace Wikidata\Property;
 
+use Wikidata\AbstractNode;
+
 use Wikidata\Value\GlobeCoordinateValue;
 use Wikidata\Value\QuantityValue;
 use Wikidata\Value\TimeValue;
 use Wikidata\Value\WikibaseItem;
 
-class PropertyDatavalue
+class PropertyDatavalue extends AbstractNode
 {
+    protected $value;
+
+    protected $type;
+
     /**
      * Class constructor.
      *
@@ -25,6 +31,11 @@ class PropertyDatavalue
 
         $this->value = $this->createPropertyValueByType($datavalue->value, $datavalue->type);
         $this->type = $datavalue->type;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
@@ -71,5 +82,24 @@ class PropertyDatavalue
         }
 
         return $this->value->getValue($lang);
+    }
+
+    public function getDatavalue()
+    {
+        return $this->value;
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->value instanceof AbstractNode ? $this->value->jsonSerialize() : $this->value;
+
+        // if ($this->type == 'string') {
+        //     return $this->value;
+        // }
+        //
+        // return [
+        //     'type'  => $this->type,
+        //     'value' => $this->value instanceof AbstractNode ? $this->value->jsonSerialize() : $this->value,
+        // ];
     }
 }

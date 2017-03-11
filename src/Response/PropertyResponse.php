@@ -2,9 +2,11 @@
 
 namespace Wikidata\Response;
 
+use Wikidata\AbstractNode;
+
 use Wikidata\Entity\Entity;
 
-class PropertyResponse
+class PropertyResponse extends AbstractNode
 {
     private $properties;
 
@@ -38,6 +40,22 @@ class PropertyResponse
     }
 
     /**
+     * Get all entity or only single by id.
+     *
+     * @param int $id Entity id (like Q26) or null
+     *
+     * @return mix Return array with /Entity/Entity or single /Entity/Entity
+     */
+    public function get($id = null)
+    {
+        if ($id) {
+            return $this->properties[$id];
+        }
+
+        return $this->properties;
+    }
+
+    /**
      * Creating entity.
      *
      * @param object $item StdClass object with property
@@ -57,5 +75,10 @@ class PropertyResponse
     public function getLabel()
     {
         return $this->first()->getLabel($this->lang);
+    }
+
+    public function jsonSerialize()
+    {
+        return collect($this->properties)->jsonSerialize();
     }
 }

@@ -2,8 +2,16 @@
 
 namespace Wikidata\Search;
 
-class SearchItemMatch
+use Wikidata\AbstractNode;
+
+class SearchItemMatch extends AbstractNode
 {
+    protected $type;
+
+    protected $language;
+
+    protected $text;
+
     /**
      * Class constructor.
      *
@@ -11,8 +19,17 @@ class SearchItemMatch
      */
     public function __construct($match)
     {
-        $this->type = $match->type;
+        $this->type     = $match->type;
         $this->language = $match->language;
-        $this->text = $match->text;
+        $this->text     = $match->text;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'type'     => $this->type,
+            'language' => $this->language,
+            'text'     => $this->text,
+        ];
     }
 }

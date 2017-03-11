@@ -2,13 +2,23 @@
 
 namespace Wikidata\Property;
 
-class PropertySnak
+use Wikidata\AbstractNode;
+
+class PropertySnak extends AbstractNode
 {
+    protected $snaktype;
+
+    protected $property;
+
+    protected $datatype;
+
+    protected $datavalue;
+
     /**
-     * Class constructor.
-     *
-     * @param object $snak StdClass object with snak
-     */
+    * Class constructor.
+    *
+    * @param object $snak StdClass object with snak
+    */
     public function __construct($snak)
     {
         $this->snaktype = $snak->snaktype;
@@ -18,12 +28,30 @@ class PropertySnak
     }
 
     /**
-     * Get only datavalue of snak.
-     *
-     * @return object /Property/PropertyDatavalue
-     */
+    * Get only datavalue of snak.
+    *
+    * @return object /Property/PropertyDatavalue
+    */
     public function getDatavalue()
     {
         return $this->datavalue;
+    }
+
+    public function getDatatype()
+    {
+        return $this->datatype;
+    }
+
+    public function getProperty()
+    {
+        return $this->property;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'type'  => $this->datatype,
+            'value' => $this->getDatavalue()->jsonSerialize(),
+        ];
     }
 }

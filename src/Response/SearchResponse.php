@@ -2,9 +2,11 @@
 
 namespace Wikidata\Response;
 
+use Wikidata\AbstractNode;
+
 use Wikidata\Search\SearchItem;
 
-class SearchResponse
+class SearchResponse extends AbstractNode
 {
     private $searchinfo;
 
@@ -66,5 +68,10 @@ class SearchResponse
     private function createSearchItem($item)
     {
         return new SearchItem($item);
+    }
+
+    public function jsonSerialize()
+    {
+        return collect($this->search)->jsonSerialize();
     }
 }

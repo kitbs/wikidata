@@ -2,8 +2,14 @@
 
 namespace Wikidata\Entity;
 
-class EntityValue
+use Wikidata\AbstractNode;
+
+class EntityValue extends AbstractNode
 {
+    protected $language;
+
+    protected $value;
+
     /**
      * Class constructor.
      *
@@ -23,5 +29,10 @@ class EntityValue
     public function getValue()
     {
         return $this->value;
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->getValue();
     }
 }
