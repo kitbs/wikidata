@@ -3,7 +3,6 @@
 namespace Wikidata\Response;
 
 use Wikidata\AbstractNode;
-
 use Wikidata\Entity\Entity;
 
 class PropertyResponse extends AbstractNode

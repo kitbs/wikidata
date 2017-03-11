@@ -3,7 +3,6 @@
 namespace Wikidata\Value;
 
 use Wikidata\AbstractNode;
-
 use Wikidata\Wikidata;
 
 class WikibaseItem extends AbstractNode
@@ -13,14 +12,14 @@ class WikibaseItem extends AbstractNode
     protected $numericId;
 
     /**
-    * Class constructor.
-    *
-    * @param object $value StdClass object with wikibase item
-    */
+     * Class constructor.
+     *
+     * @param object $value StdClass object with wikibase item
+     */
     public function __construct($value)
     {
         $this->entityType = $value->{'entity-type'};
-        $this->numericId  = $value->{'numeric-id'};
+        $this->numericId = $value->{'numeric-id'};
     }
 
     public function getEntityType()
@@ -39,10 +38,10 @@ class WikibaseItem extends AbstractNode
     }
 
     /**
-    * Call wikidata api and get only label of wikibase item.
-    *
-    * @return string $value
-    */
+     * Call wikidata api and get only label of wikibase item.
+     *
+     * @return string $value
+     */
     public function getValue($lang)
     {
         $wikidata = new Wikidata();

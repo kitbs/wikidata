@@ -17,10 +17,10 @@ class PropertyQualifier extends AbstractNode
     protected $datavalue;
 
     /**
-    * Class constructor.
-    *
-    * @param object $qualifier StdClass object with qualifier
-    */
+     * Class constructor.
+     *
+     * @param object $qualifier StdClass object with qualifier
+     */
     public function __construct($qualifier)
     {
         $this->hash = $qualifier->hash;
@@ -31,17 +31,17 @@ class PropertyQualifier extends AbstractNode
         if ($this->snaktype === 'novalue') {
             $this->datavalue = new PropertyDatavalue('novalue');
         } elseif (!isset($qualifier->datavalue)) {
-            $this->datavalue = new NullPropertyDatavalue;
+            $this->datavalue = new NullPropertyDatavalue();
         } else {
             $this->datavalue = new PropertyDatavalue($qualifier->datavalue);
         }
     }
 
     /**
-    * Get property datavalue.
-    *
-    * @return object /Property/PropertyDatavalue
-    */
+     * Get property datavalue.
+     *
+     * @return object /Property/PropertyDatavalue
+     */
     public function getDatavalue()
     {
         return $this->datavalue;

@@ -8,7 +8,6 @@ class NullPropertyDatavalue extends AbstractNode
 {
     public function getValue()
     {
-        return null;
     }
 
     public function getDatavalue()

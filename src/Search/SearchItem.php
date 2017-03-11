@@ -19,10 +19,10 @@ class SearchItem extends AbstractNode
     private $aliases;
 
     /**
-    * Class constructor.
-    *
-    * @param object $item StdClass object with item
-    */
+     * Class constructor.
+     *
+     * @param object $item StdClass object with item
+     */
     public function __construct($item)
     {
         $this->id = $item->id;
@@ -34,10 +34,10 @@ class SearchItem extends AbstractNode
     }
 
     /**
-    * Get only entity id.
-    *
-    * @return string
-    */
+     * Get only entity id.
+     *
+     * @return string
+     */
     public function getEntityId()
     {
         return $this->id;
@@ -65,8 +65,8 @@ class SearchItem extends AbstractNode
             'url'         => $this->url,
             'label'       => $this->label->jsonSerialize(),
             'description' => $this->description instanceof AbstractNode ? $this->description->jsonSerialize() : null,
-            'aliases'     => collect($this->aliases)->transform(function($aliases) {
-                return collect($aliases)->transform(function($alias) {
+            'aliases'     => collect($this->aliases)->transform(function ($aliases) {
+                return collect($aliases)->transform(function ($alias) {
                     return $alias->jsonSerialize();
                 });
             })->jsonSerialize(),

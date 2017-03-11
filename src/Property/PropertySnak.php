@@ -15,10 +15,10 @@ class PropertySnak extends AbstractNode
     protected $datavalue;
 
     /**
-    * Class constructor.
-    *
-    * @param object $snak StdClass object with snak
-    */
+     * Class constructor.
+     *
+     * @param object $snak StdClass object with snak
+     */
     public function __construct($snak)
     {
         $this->snaktype = $snak->snaktype;
@@ -28,10 +28,10 @@ class PropertySnak extends AbstractNode
     }
 
     /**
-    * Get only datavalue of snak.
-    *
-    * @return object /Property/PropertyDatavalue
-    */
+     * Get only datavalue of snak.
+     *
+     * @return object /Property/PropertyDatavalue
+     */
     public function getDatavalue()
     {
         return $this->datavalue;
